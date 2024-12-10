@@ -1,0 +1,59 @@
+##Project Idea: Real-Time Weather Data Stream Processor
+Overview:
+In this project, I created a system that streams weather data from a public API, processes it using Apache Kafka, and stores it in a database (sql server) for further analysis. I used Docker to set up my Kafka environment.
+
+##Components of the Project:
+Weather Data Producer: A simple Python script that fetches weather data from a public API (like OpenWeatherMap) and sends it to a Kafka topic.
+Kafka: Apache Kafka will be set up using Docker to handle the messaging.
+Consumer Application: Another Python script that reads from the Kafka topic, processes the data, and stores it in a PostgreSQL database.
+Database: SQL Server will be used to store the weather data.
+
+##Step-by-Step Implementation:
+##Step 1: Set Up Docker for Kafka
+Install Docker: Ensure you have Docker installed on your machine. You can download it from Docker's official website.
+
+Create a Docker Compose File: Create a docker-compose.yml file to define your Kafka and Zookeeper services.Refer my docker-compose.yml file
+
+Run Docker Compose: In the terminal, navigate to the directory containing the docker-compose.yml file and run:
+
+docker-compose up -d
+This command will start Zookeeper and Kafka.
+
+##Step 2: Create the Weather Data Producer
+Install Required Libraries: Create a virtual environment and install the necessary Python libraries.
+
+bash
+Copy code
+mkdir weather-data-producer
+cd weather-data-producer
+python -m venv venv
+source venv/bin/activate  # or venv\Scripts\activate on Windows
+pip install kafka-python requests
+Write the Producer Script: Check the producer.py file
+
+##Step 3: Create the Consumer Application
+Refer consumer.py file, and use the required credentials to connect to sql server.
+
+##Step 4: Testing the Project
+Start the Docker services (if not already running):
+
+docker-compose up -d
+
+Run the Producer to start sending weather data by running:
+python producer.py in the terminal
+
+Run the Consumer to start processing and storing data in sql server:
+python consumer.py in the terminal
+
+Check Data in SQL server to verify that the weather data is being stored correctly.
+
+## obtain your OpenWeather API key, follow these steps:
+
+Step 1: Create an Account
+Visit the OpenWeather Website: Go to the OpenWeather website.
+Sign Up: Click on the Sign Up button in the upper right corner. You can sign up using your email address or with a social media account like Google or GitHub.
+Step 2: Confirm Your Email
+After signing up, you will receive a confirmation email. Follow the instructions in the email to verify your account.
+Step 3: Get Your API Key
+Log In: Once your account is verified, log in to your OpenWeather account.
+Go to API Keys: After logging in, navigate to the API keys section. You can find this in your account dashboard.
